@@ -1,0 +1,30 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+issueTrackerURL="#"
+license="MIT"
+
+[[mods]]
+modId="tnt_sword"
+version="${file.jar.metadata.version}"
+displayName="TNT Sword"
+updateJSONURL="#"
+logoFile="tnt_sword_logo.png"
+credits="Generated with Gemini"
+authors="Your Name"
+description='''
+A diamond sword that spawns lit TNT when right-clicked.
+'''
+
+[[dependencies.tnt_sword]]
+modId="forge"
+mandatory=true
+versionRange="[47,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.tnt_sword]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.20.1,1.21)"
+ordering="NONE"
+side="BOTH"

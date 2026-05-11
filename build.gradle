@@ -1,0 +1,73 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            url = 'https://files.minecraftforge.net/maven/'
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:6.0.+'
+    }
+}
+apply plugin: 'net.minecraftforge.gradle'
+apply plugin: 'java'
+
+base {
+    archivesName = 'tnt_sword'
+}
+
+version = '1.0.0'
+group = 'com.dostmod.tnt_sword'
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+minecraft {
+    mappings channel: 'official', version: '1.20.1'
+    runs {
+        client {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'MODLOADING'
+            property 'forge.logging.console.level', 'debug'
+
+            mods {
+                tnt_sword {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        server {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'MODLOADING'
+            property 'forge.logging.console.level', 'debug'
+
+            mods {
+                tnt_sword {
+                    source sourceSets.main
+                }
+            }
+        }
+    }
+}
+
+sourceSets.main.resources {
+    srcDirs 'src/main/resources'
+    exclude '.gitkeep'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.20.1-47.2.0'
+}
+
+jar {
+    manifest {
+        attributes(
+                'ModInitializer': 'com.dostmod.tnt_sword.TNTSwordMod'
+        )
+    }
+    from sourceSets.main.resources
+}
+
